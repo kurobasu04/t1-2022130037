@@ -31,8 +31,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'id' => 'required|size:12|unique:products,id',
             'product_name' => 'required|max:255',
+            'description' => 'string|max:255',
             'retail_price' => 'required|numeric',
             'wholesale_price' => 'required|numeric',
             'origin' => 'required|size:2',
@@ -49,7 +49,15 @@ class ProductController extends Controller
             $validated['product_image'] = $imagePage;
         }
 
-        Product::create($request->all());
+        $product = Product::create([
+            'product_name' => $validated['product_name'],
+            'description' => $validated['description'],
+            'retail_price' => $validated['retail_price'],
+            'wholesale_price' => $validated['wholesale_price'],
+            'origin' => $validated['origin'],
+            'quantity' => $validated['quantity'],
+            'product_image' => $validated['product_image'] ?? null,
+        ]);
 
         return redirect()->route('products.index')
             ->with('success', 'Product created successfully.');
@@ -60,7 +68,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('products'));
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -68,7 +76,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('products'));
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -77,7 +85,6 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validated = $request->validate([
-            'id' => 'required|size:12|unique:products,id',
             'product_name' => 'required|max:255',
             'retail_price' => 'required|numeric',
             'wholesale_price' => 'required|numeric',

@@ -32,8 +32,8 @@
                             <tbody>
                                 @forelse ($products as $product)
                                     <tr>
-                                        <td>{{ $product->id }}</td>
-                                        <td>{{ $product->title }}</td>
+                                        <th scope="row">{{ $product->id }}</th>
+                                        <td>{{ $product->product_name }}</td>
                                         <td>{{ $product->description }}</td>
                                         <td>{{ 'Rp ' . number_format($product->retail_price, 0, ',', '.') }}</td>
                                         <td>{{ 'Rp ' . number_format($product->wholesale_price, 0, ',', '.') }}</td>
@@ -44,7 +44,7 @@
                                         <td class="text-center">
                                             <a href="{{ route('products.edit', $product->id) }}"
                                                 class="btn btn-sm btn-secondary">EDIT</a>
-                                            <form action={{ route('guests.destroy', $guest) }} method="POST"
+                                            <form action={{ route('products.destroy', $product) }} method="POST"
                                                 class="d-inline-block">
                                                 @method('DELETE')
                                                 @csrf
