@@ -56,10 +56,21 @@
                                     placeholder="Wholesale Price"
                                     value="{{ old('wholesale_price', $product->wholesale_price) }}">
                             </div>
+                            {{-- Select ISO 3166-1 ALPHA-2 Country Codes --}}
                             <div class="mb-3 col-md-12 col-sm-12">
                                 <label for="origin" class="form-label">Origin</label>
-                                <input type="text" class="form-control" id="origin" name="origin"
-                                    placeholder="Origin" value="{{ old('origin', $product->origin) }}">
+                                <select class="form-control" id="origin" name="origin">
+                                    <option value="" disabled selected>Select Country</option>
+                                    <option value="ID" {{ old('origin', $product->origin) == 'ID' ? 'selected' : '' }}>Indonesia</option>
+                                    <option value="US" {{ old('origin', $product->origin) == 'US' ? 'selected' : '' }}>United States
+                                    </option>
+                                    <option value="GB" {{ old('origin', $product->origin) == 'GB' ? 'selected' : '' }}>United Kingdom
+                                    </option>
+                                    <option value="JP" {{ old('origin', $product->origin) == 'JP' ? 'selected' : '' }}>Japan</option>
+                                    <option value="FR" {{ old('origin', $product->origin) == 'FR' ? 'selected' : '' }}>France</option>
+                                    <option value="DE" {{ old('origin', $product->origin) == 'DE' ? 'selected' : '' }}>Germany</option>
+                                    <option value="IN" {{ old('origin', $product->origin) == 'IN' ? 'selected' : '' }}>India</option>
+                                </select>
                             </div>
                             <div class="mb-3 col-md-12 col-sm-12">
                                 <label for="quantity" class="form-label">Quantity</label>

@@ -14,9 +14,9 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('products.create') }}" class="btn btn-md btn-success mb-3">ADD PRODUCT</a>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-hover">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="col">ID</th>
                                     <th scope="col">PRODUCT NAME</th>
                                     <th scope="col">DESCRIPTION</th>
@@ -42,10 +42,17 @@
                                         <td>{{ $product->created_at }}</td>
                                         <td>{{ $product->updated_at }}</td>
                                         <td class="text-center">
+                                            <!-- Tombol Show/Detail -->
+                                            <a href="{{ route('products.show', $product->id) }}"
+                                                class="btn btn-sm btn-info">SHOW</a>
+
+                                            <!-- Tombol Edit -->
                                             <a href="{{ route('products.edit', $product->id) }}"
-                                                class="btn btn-sm btn-secondary">EDIT</a>
+                                                class="btn btn-sm btn-secondary ms-2">EDIT</a>
+
+                                            <!-- Tombol Delete -->
                                             <form action={{ route('products.destroy', $product) }} method="POST"
-                                                class="d-inline-block">
+                                                class="d-inline-block ms-2">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-sm"
@@ -69,7 +76,6 @@
             </div>
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

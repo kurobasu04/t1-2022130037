@@ -30,37 +30,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'product_name' => 'required|max:255',
-            'description' => 'string|max:255',
+        $request->validate([
+            'product_name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
             'retail_price' => 'required|numeric',
             'wholesale_price' => 'required|numeric',
-            'origin' => 'required|size:2',
-            'quantity' => 'required|integer|min:0',
+            'origin' => 'required|string|max:2',
+            'quantity' => 'required|integer',
+            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $model = new Product();
+        $model->product_name = $request->product_name;
+        $model->description = $request->description;
+        $model->retail_price = $request->retail_price;
+        $model->wholesale_price = $request->wholesale_price;
+        $model->origin = $request->origin;
+        $model->quantity = $request->quantity;
 
         if ($request->hasFile('product_image')) {
-            $request->validate([
-                'product_image' => 'image|mimes:png,jpg,jpeg,gif,svg|max:2048'
-            ]);
-
-            $imagePage = $request->file('product_image')->store('public/images');
-
-            $validated['product_image'] = $imagePage;
+            $model->product_image = $request->file('product_image')->store('images', 'public');
         }
 
-        $product = Product::create([
-            'product_name' => $validated['product_name'],
-            'description' => $validated['description'],
-            'retail_price' => $validated['retail_price'],
-            'wholesale_price' => $validated['wholesale_price'],
-            'origin' => $validated['origin'],
-            'quantity' => $validated['quantity'],
-            'product_image' => $validated['product_image'] ?? null,
-        ]);
+        $model->save();
 
-        return redirect()->route('products.index')
-            ->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Product created successfully!');
     }
 
     /**
@@ -68,7 +62,17 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $countries = [
+            'ID' => 'Indonesia',
+            'US' => 'United States',
+            'CN' => 'China',
+            'JP' => 'Japan',
+            'DE' => 'Germany',
+        ];
+
+        $countryName = isset($countries[$product->origin]) ? $countries[$product->origin] : 'Unknown';
+
+        return view('products.show', compact('product', 'countryName'));
     }
 
     /**
@@ -103,9 +107,11 @@ class ProductController extends Controller
         }
 
         $product->update($request->all());
+        $product->updated_at = now();
+        $product->save();
 
         return redirect()->route('products.index')
-                         ->with('success', 'Product updated successfully.');
+            ->with('success', 'Product updated successfully.');
     }
 
     /**
