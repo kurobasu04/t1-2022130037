@@ -9,3 +9,4 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 // route products
 Route::resource('/products', ProductController::class);
+

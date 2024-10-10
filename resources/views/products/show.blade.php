@@ -49,7 +49,7 @@
                             </tr>
                         </table>
 
-                        <div class="d-flex justify-content-start mt-4">
+                        <div class="d-flex justify-content-start mt-4 mb-5">
                             <a href="{{ route('products.index') }}" class="btn btn-secondary">Back to Product List</a>
                         </div>
                     </div>
