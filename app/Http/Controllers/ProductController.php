@@ -68,6 +68,10 @@ class ProductController extends Controller
             'CN' => 'China',
             'JP' => 'Japan',
             'DE' => 'Germany',
+            'GB' => 'United Kingdom of Great Britain and Northern Ireland',
+            'FR' => 'France',
+            'IN' => 'India',
+
         ];
 
         $countryName = isset($countries[$product->origin]) ? $countries[$product->origin] : 'Unknown';

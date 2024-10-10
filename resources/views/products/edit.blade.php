@@ -62,6 +62,7 @@
                                 <select class="form-control" id="origin" name="origin">
                                     <option value="" disabled selected>Select Country</option>
                                     <option value="ID" {{ old('origin', $product->origin) == 'ID' ? 'selected' : '' }}>Indonesia</option>
+                                    <option value="CN" {{ old('origin', $product->origin) == 'CN' ? 'selected' : '' }}>China</option>
                                     <option value="US" {{ old('origin', $product->origin) == 'US' ? 'selected' : '' }}>United States
                                     </option>
                                     <option value="GB" {{ old('origin', $product->origin) == 'GB' ? 'selected' : '' }}>United Kingdom

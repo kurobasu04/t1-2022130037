@@ -57,6 +57,7 @@
                                 <select class="form-control" id="origin" name="origin">
                                     <option value="" disabled selected>Select Country</option>
                                     <option value="ID" {{ old('origin') == 'ID' ? 'selected' : '' }}>Indonesia</option>
+                                    <option value="CN" {{ old('origin') == 'CN' ? 'selected' : '' }}>China</option>
                                     <option value="US" {{ old('origin') == 'US' ? 'selected' : '' }}>United States
                                     </option>
                                     <option value="GB" {{ old('origin') == 'GB' ? 'selected' : '' }}>United Kingdom
