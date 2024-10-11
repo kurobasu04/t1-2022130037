@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">RETAIL STORE</h3>
+                    {{-- <h3 class="text-center my-4">RETAIL STORE</h3> --}}
                     <hr>
                 </div>
                 <div class="mt-4 p-5 bg-dark text-white rounded text-center">
