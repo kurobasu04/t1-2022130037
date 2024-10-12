@@ -7,11 +7,8 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'node_modules/admin-lte/dist/js/adminlte.min.js',
-                'node_modules/admin-lte/dist/css/adminlte.min.css',
             ],
             refresh: true,
         }),
     ],
 });
-

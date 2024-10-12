@@ -10,7 +10,6 @@
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "axios": "^1.7.4",
-        "bootstrap": "^5.2.3",
         "husky": "^9.1.6",
         "laravel-mix": "^6.0.49",
         "laravel-vite-plugin": "^1.0",
@@ -21,7 +20,9 @@
     },
     "dependencies": {
         "admin-lte": "^4.0.0-beta2",
+        "bootstrap": "^5.3.3",
         "bootstrap-icons": "^1.11.3",
+        "bulma": "^1.0.2",
         "chart.js": "^4.4.4"
     }
 }

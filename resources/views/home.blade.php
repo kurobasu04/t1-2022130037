@@ -16,7 +16,7 @@
                         <div class="card text-white bg-primary mb-3">
                             <div class="card-header">Total Quantity</div>
                             <div class="card-body">
-                                <h5 class="card-title text-start">{{ $total_quantity }}</h5>
+                                <h5 class="card-title text-start">{{ $total_quantity }}</h5><br>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                             <div class="card-header">Most Expensive Product</div>
                             <div class="card-body">
                                 <h5 class="card-title text-start">{{ $most_expensive_product->product_name }}</h5>
-                                <p class="mb-0 text-start"> &nbsp;- Price: {{ 'Rp ' . number_format($most_expensive_product->retail_price, 0, ',', '.') }}</p>
+                                <p class="mb-0 text-start"> Price: {{ 'Rp ' . number_format($most_expensive_product->retail_price, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <div class="card-header">Most Stocked Product</div>
                             <div class="card-body">
                                 <h5 class="card-title text-start">{{ $most_stocked_product->product_name }}</h5>
-                                <p class="mb-0 text-start">&nbsp;- Quantity: {{ $most_stocked_product->quantity }}</p>
+                                <p class="mb-0 text-start">Quantity: {{ $most_stocked_product->quantity }}</p>
                             </div>
                         </div>
                     </div>
